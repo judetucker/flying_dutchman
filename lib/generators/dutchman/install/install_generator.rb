@@ -26,11 +26,10 @@ module Dutchman
         else
 
            puts ""
-           puts "The Flying Dutchman"
-           puts "Your Captain is #{options[:captain]}."
+           puts "===> The Flying Dutchman"
+           puts "===> Your Captain is #{options[:captain]}."
            puts ""
            
-          # copy_file "assets/stylesheets/#{options[:captain]}/#{options[:captain]}.scss", "vendor/assets/stylesheets/#{options[:captain]}.scss"
 
           if File.exist?(app_scss)
             insert_into_file app_scss, css_inject, :after => "require_self\n"
@@ -51,12 +50,19 @@ module Dutchman
           end
 
           if custom=="yes"
-            copy_file "assets/stylesheets/#{options[:captain]}/.", "vendor/assets/stylesheets/#{options[:captain]}/."
+            if captain=="normalize"
+              puts ""
+              puts "===> Arrr. You can't customize Normalize."
+              puts "===> Try custom with Bootstrap or Skeleton."
+            else
+            copy_file "assets/stylesheets/#{options[:captain]}/#{options[:captain]}-custom.scss", "vendor/assets/stylesheets/#{options[:captain]}/#{options[:captain]}.scss"
+            copy_file "assets/stylesheets/#{options[:captain]}/_custom.scss", "vendor/assets/stylesheets/#{options[:captain]}/_custom.scss"
+            end 
           end
 
           puts ""
-          puts "Your ship is built."
-          puts "Welcome Aboard!"
+          puts "===> Your ship is built."
+          puts "===> Welcome Aboard!"
           puts ""
 
         end
