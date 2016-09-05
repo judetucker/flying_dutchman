@@ -24,6 +24,10 @@ For this gem we are assuming that you have a Ruby on Rails project that is Rails
 	    |-- javascripts
 	    `-- stylesheets
 ```
+Finally, since this is a SASS-based setup your app must also require
+```
+gem 'sass-rails'
+```
 
 ### Installing
 
